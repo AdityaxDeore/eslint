@@ -193,7 +193,7 @@ var quux = 42;
 
 ### varsIgnorePattern
 
-The `varsIgnorePattern` option specifies exceptions not to check for usage: variables whose names match a regexp pattern. For example, variables whose names contain `ignored` or `Ignored`. However, it excludes variables targeted by other options like `argsIgnorePattern` and `caughtErrorsIgnorePattern`.
+The `varsIgnorePattern` option specifies exceptions not to check for usage: variables whose names match a regexp pattern. For example, variables whose names contain `ignored` or `Ignored`. However, it excludes variables targeted by other options like `argsIgnorePattern` and `caughtErrorsIgnorePattern`. It also applies to variables declared in `/* global */` comments.
 
 Examples of **correct** code for the `{ "varsIgnorePattern": "[iI]gnored" }` option:
 
@@ -205,6 +205,18 @@ Examples of **correct** code for the `{ "varsIgnorePattern": "[iI]gnored" }` opt
 const firstVarIgnored = 1;
 const secondVar = 2;
 console.log(secondVar);
+```
+
+:::
+
+Examples of **correct** code for the `{ "varsIgnorePattern": "DEBUG" }` option:
+
+::: correct
+
+```js
+/*eslint no-unused-vars: ["error", { "varsIgnorePattern": "DEBUG" }]*/
+
+/* global DEBUG */
 ```
 
 :::
